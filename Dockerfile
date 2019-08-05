@@ -1,12 +1,12 @@
 # Build your application inside node:alpine image
 FROM node:alpine as builder
-WORKDIR '/usr/src/app'
-COPY COPY package*.json ./
+WORKDIR '/app'
+COPY package.json .
 RUN npm install
-COPY ./ ./
-CMD ["npm", "run", "build"]
+COPY . .
+RUN npm run build
 
 # Install nginx image and copy build folder into it
 FROM nginx
 EXPOSE 80
-COPY --from=builder /usr/src/app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
