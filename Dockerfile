@@ -1,6 +1,6 @@
 # Build your application inside node:alpine image
 FROM node:alpine as builder
-WORKDIR '/app'
+WORKDIR '/usr/src/app'
 COPY package.json .
 RUN npm install
 COPY . .
