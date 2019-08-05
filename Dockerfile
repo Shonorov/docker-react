@@ -9,4 +9,4 @@ CMD ["npm", "run", "build"]
 # Install nginx image and copy build folder into it
 FROM nginx
 EXPOSE 80
-COPY --from=builder /app/build /usr/share/nginx/html
+COPY --from=builder /usr/src/app/build /usr/share/nginx/html
